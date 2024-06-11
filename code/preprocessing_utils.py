@@ -53,7 +53,6 @@ def compute_EKE_tseries(ds, mask=None):
     eke_tseries = ((ds.EKE)*area_array)/area_sum
     eke_tseries = eke_tseries.sum(['lat', 'lon']) 
     eke_tseries = eke_tseries.to_dataset(name="EKE").compute()
-    #eke_tseries.to_netcdf(f'../results/{kind}/EKE_{reg}_integrated_timeseries.nc')
 
     return eke_tseries
 
