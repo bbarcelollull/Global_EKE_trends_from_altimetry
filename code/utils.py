@@ -24,7 +24,7 @@ region_dic = {'GWSE': [[-0.593297, 42.156397], [21.390730, 65.139224]],
 
 
 def smooth_regions(da, lim = 1000):
-    # Assuming 'eke_reg' is your DataArray
+  
     np_da = da.values
 
     # Create a structure for the morphological operations
@@ -145,23 +145,5 @@ def crop(ds, coords, drop=False,
     return ds_crop
 
 
-def process_ts(kind, reg=''):
 
-    if reg not in ['', 'tropical', 'remainder', 'high eke']:
-        ds = xr.open_dataset(f'../../results/regions/{reg}/{kind}/EKE_integrated_timeseries.nc')
-        eke = ds.EKE
-    else:
-        extra_=''
-        if reg!='':
-            extra_ = '_'
-        ds = xr.open_dataset(f'../../results/{kind}/EKE_{reg}{extra_}integrated_timeseries.nc')
-        eke = ds.EKE
-    return eke
-
-def process_ts_2(all_rep_ts, two_ts, all_nrt_ts):
-    all_ts = xr.concat([all_rep_ts, all_nrt_ts], dim='time')
-    all_ts = all_ts.rolling(time=365, center=True).mean().compute()
-    two_ts = two_ts.rolling(time=365, center=True).mean().compute()
-
-    return all_ts, two_ts
 
