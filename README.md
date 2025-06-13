@@ -3,7 +3,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15655616.svg)](https://doi.org/10.5281/zenodo.15655616)
 
 
-This repository contains the codes used to conduct the study *"Kuroshio Extension and Gulf Stream dominate the Eddy Kinetic Energy intensification observed in the global ocean"*  by  **Barceló-Llull, B., Roselló, P., Combes, V., Sánchez-Román, A., Pujol, M. I., & Pascual, A.**  Published in **Scientific Reports** (2025) 🔗 [DOI: 10.1038/s41598-025-06149-9](https://doi.org/10.1038/s41598-025-06149-9)
+This repository contains the codes used to conduct the study *"Kuroshio Extension and Gulf Stream dominate the Eddy Kinetic Energy intensification observed in the global ocean"*  by  **Barceló-Llull, B., Roselló, P., Combes, V., Sánchez-Román, A., Pujol, M. I., & Pascual, A.**  Published in *Scientific Reports* (2025) 🔗 [DOI: 10.1038/s41598-025-06149-9](https://doi.org/10.1038/s41598-025-06149-9)
 
 This repository is built from the repository of Pere Rosselló available at: https://github.com/pererossello/EKE_all_two_sat
 
