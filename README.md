@@ -27,11 +27,23 @@ Instructions for downloading the data and executing the computations can be foun
 However, if you only wish to evaluate the EKE time series and/or generate figures, you can directly run the Jupyter notebooks in the `generate_figures/` directory with the preprocessed data provided in `results/`.
 
 ## Data
-The data used in this study comes from the global multi-satellite Delayed Time (DT) Data Unification and Altimeter Combination System (DUACS), made freely available through the European Copernicus Program.
 
-We use two types of altimetric L4 gridded products: the all-satellites (all-sat) and the two-satellites (two-sat) products.
+The altimetric data products used in this study are publicly available:
 
-Please refer to the Data and Methods section for more information on the data used in this study, including how it was retrieved and processed.
+- **vDT2021 all-sat product**  
+  Available at the Copernicus Marine Service (CMEMS):  
+  🔗 [https://doi.org/10.48670/moi-00148](https://doi.org/10.48670/moi-00148)  
+  *(Product ID: SEALEVEL_GLO_PHY_L4_MY_008_047)*
+
+- **vDT2021 two-sat product**  
+  Available at CMEMS:  
+  🔗 [https://doi.org/10.48670/moi-00145](https://doi.org/10.48670/moi-00145)  
+  *(Product ID: SEALEVEL_GLO_PHY_CLIMATE_L4_MY_008_057)*
+
+- **vDT2018 two-sat product**  
+  Available at the Copernicus Climate Change Service (C3S):  
+  🔗 [https://doi.org/10.24381/cds.4c328c78](https://doi.org/10.24381/cds.4c328c78)
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details.
