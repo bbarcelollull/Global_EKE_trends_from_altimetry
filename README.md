@@ -1,8 +1,6 @@
 # Global ocean Eddy Kinetic Energy from three decades of satellite altimetry observations
 
-This repository contains the codes used to conduct the study of Barceló-Llull, B., Roselló, P., Combes, V., Sánchez-Román, A., Pujol, M. I.  &amp; Pascual, A. entitled "Kuroshio Extension and Gulf Stream dominate the Eddy Kinetic Energy intensification observed in the global ocean"  The manuscript is under review and the preprint is available at 
-https://doi.org/10.48550/arXiv.2406.08014.
-
+This repository contains the codes used to conduct the study *"Kuroshio Extension and Gulf Stream dominate the Eddy Kinetic Energy intensification observed in the global ocean"*  by  **Barceló-Llull, B., Roselló, P., Combes, V., Sánchez-Román, A., Pujol, M. I., & Pascual, A.**  Published in **Scientific Reports** (2025) 🔗 [DOI: 10.1038/s41598-025-06149-9](https://doi.org/10.1038/s41598-025-06149-9)
 
 This repository is built from the repository of Pere Rosselló available at: https://github.com/pererossello/EKE_all_two_sat
 
