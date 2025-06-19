@@ -2,6 +2,7 @@ import numpy as np
 import xarray as xr
 from scipy import ndimage
 import os
+import my_pymannkendall     as mk
 
 
 def dirtodict(dirPath):
@@ -145,5 +146,81 @@ def crop(ds, coords, drop=False,
     return ds_crop
 
 
+def mk_test(ts):
+    
+    if np.isnan(ts).all():
+        return np.nan, np.nan
+    results = mk.yue_wang_modification_test(ts)
+    slope, p_value, intercept, n_ns = results.slope, results.p, results.intercept, results.n_ns
+    
+    # Compute standard error of the slope
+    SE_slope = standard_error_of_slope(ts, slope, intercept, n_ns)
 
+    return slope, p_value, SE_slope
+
+def standard_error_of_slope(ts, slope, intercept, n_ns):
+    
+    '''
+    Compute standard error of the slope using the effective 
+    sample size (ESS).
+
+    The standard error of the slope is calculated as the 
+    residual standard error divided by the square root of 
+    the sum of squared differences in the independent 
+    variable (James et al., 2023), considering the effective 
+    sample size of the time series (Stan Development 
+    Team, 2021; Martínez-Moreno et al., 2021).
+
+    info about standard error of the slope (James et al., 2023): 
+    https://www.statlearning.com/ (eq. 3.8)
+
+    info about ESS here (Stan Development Team, 2021): 
+    https://mc-stan.org/docs/2_21/reference-manual/effective-sample-size-section.html 
+
+    '''
+
+    ''' 
+    Preprocessing the time series to skip nans
+    (as in mk.yue_wang_modification_test) 
+    '''
+    ts_pp, c = mk.__preprocessing(ts)
+    ts_p, n  = mk.__missing_values_analysis(ts_pp, method = 'skip')
+
+    ''' 1) Calculate residual standard error '''
+
+    # Create a time array (assuming time points are consecutive integers)
+    time = np.arange(len(ts_p))
+
+    # Calculate the predicted values using the Sen's slope
+    y_pred = slope * time + intercept 
+
+    # Calculate the residuals
+    residuals = ts_p - y_pred
+
+    # Calculate the Sum of Squared Residuals (RSS)
+    RSS = np.sum(residuals**2)
+
+    # Compute effective sample size (ESS)
+    ESS  = len(ts_p)/n_ns
+
+    print(' ')
+    print('len(ts)', len(ts))
+    print('len(ts_p)', len(ts_p))
+    print('n_ns', n_ns)
+    print('ESS', ESS)
+
+    # Compute residual standard error
+
+    RSE = np.sqrt(RSS/(ESS-2)) 
+
+    ''' 2) Compute square root of the sum of squared 
+    differences in the independent variable '''
+
+    denom = np.sqrt(np.sum((time - np.mean(time))**2))
+
+    ''' 3) Compute standard error '''
+    
+    SE_slope = RSE / denom
+
+    return SE_slope
 
